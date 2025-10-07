@@ -1,0 +1,31 @@
+name: Expresiones
+run-name: ¡Estoy aprendiendo a usar expresiones!
+on:
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: 'Nombre completo'
+        required: true
+        default: 'Jordan'
+        type: string
+      lenguaje_favorito:
+        description: 'Lenguaje de programación que prefieres'
+        default: Python
+        required: true
+        type: choice
+        options:
+          - Python
+          - React
+jobs:
+  back-end:
+    if: ${{ inputs.lenguaje_favorito == 'Python' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es un desarrollador back-end
+  front-end:
+    if: ${{ inputs.lenguaje_favorito != 'Python' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es un desarrollador front-end
