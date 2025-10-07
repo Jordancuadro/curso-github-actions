@@ -1,0 +1,9 @@
+name: Contexto
+run-name: ¡Estoy aprendiendo a usar contexto!
+on: push
+jobs:
+  check-main:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.actor }} esta Desplegando en $GITHUB_REF"
